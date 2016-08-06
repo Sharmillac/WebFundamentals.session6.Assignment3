@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the buttonsss to evaluate/execute JavaScript code/expressions.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo1"></p>
+
+<p id="demo2"></p>
+
+
+<p id="demo3"></p>
+
+
+<script>
+
+function findMaxSequence(p1, p2)
+{
+ 
+       var lLongestSeq = [];
+       var lPrevSeq = [];
+       var lCnt = 0;
+       var lPrevValue = 0;
+
+       for(var i = 0; i < p1.length; i++)
+       {
+
+      
+             if(lPrevValue < p1[i])
+             {
+                  lLongestSeq[lCnt] = p1[i];
+
+             }
+             else
+             {
+
+                 if(lPrevSeq.length < lLongestSeq.length)
+                     lPrevSeq = lLongestSeq;
+                 lLongestSeq = [];
+                 lCnt = 0;
+                 lLongestSeq[lCnt] = p1[i];
+
+             }
+             lPrevValue  = p1[i];
+             lCnt++;
+
+       }
+
+      if(lLongestSeq.length > lPrevSeq .length)
+         lPrevSeq = lLongestSeq;
+
+      if(lPrevSeq.length > 1)
+          document.getElementById(p2).innerHTML = "Longest Sequence " + lPrevSeq ;
+      else
+          document.getElementById(p2).innerHTML = "Longest Sequence - NONE "  ;
+
+}
+
+
+
+function myFunction()
+{
+      findMaxSequence([3, 2, 3, 4, 2, 2, 4] , "demo1");
+      findMaxSequence([3, 5, 4, 6, 1, 2, 3, 6, 10, 32] , "demo2");
+      findMaxSequence([3, 2, 1] , "demo3");
+ 
+
+}
+</script>
+
+</body>
+</html>
